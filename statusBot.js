@@ -13,10 +13,10 @@ function update() {
           console.log(err);
           //return message.reply('Error getting Minecraft server status...');
       }
-      body = JSON.parse(body);
+    //  body = JSON.parse(body);
       var status = 'Server offline';
-      if(body.status=="Online") {
-        if(body.players>=body.stots){
+      if(body["status"]=="Online") {
+        if(body["players"]>=body["stots"]){
             client.user.setStatus('idle')
             .catch(console.error);
         }else{
@@ -24,7 +24,7 @@ function update() {
             .catch(console.error);
         }
 		
-        status = ' ' + body.players + ' / ' + body.slots;
+        status = ' ' + body["players"] + ' / ' + body["slots"];
       } else {
         client.user.setStatus('dnd')
         //.then(console.log)
