@@ -48,14 +48,7 @@ function update() {
            .catch(console.error);
 	  }
 		
-        
-      } else {
-        client.user.setStatus('dnd')
-        .catch(console.error);
-		client.user.setActivity('Žádná informace')
-         .catch(console.error);
-      }
-
+       
   });
 
 }
