@@ -1,1 +1,1 @@
-worker: node reportBot.js
+worker: node statusBot.js
