@@ -14,6 +14,7 @@ function update() {
       }
     //  body = JSON.parse(body);
 	console.log(body);
+	console.log(body["status"]);
       var status = 'Server offline';
       if(body["status"]=="Online") {
         if(body["players"]>=body["stots"]){
