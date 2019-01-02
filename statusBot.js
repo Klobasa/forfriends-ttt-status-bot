@@ -16,7 +16,7 @@ function update() {
     //  body = JSON.parse(body);
 	console.log(body);
       var status = 'Server offline';
-      if(body["status"]=="Online") {
+      if(body['status']=="Online") {
         if(body["players"]>=body["stots"]){
             client.user.setStatus('idle')
             .catch(console.error);
