@@ -12,11 +12,11 @@ function update() {
           console.log(err);
           //return message.reply('Error getting Minecraft server status...');
       }
-    //  body = JSON.parse(body);
+	  body = JSON.parse(body);
 	console.log(body);
-	console.log(body["status"]);
+	console.log(body.status);
       var status = 'Server offline';
-      if(body["status"]=="Online") {
+      if(body.status=="Online") {
         if(body["players"]>=body["stots"]){
             client.user.setStatus('idle')
             .catch(console.error);
