@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var statustring = "No signal";
-require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
+require('https').globalAgent.options.ca = require('./certdata.js').create();
 var request = require('request');
 
 var url = 'https://query.fakaheda.eu/82.208.17.109:27107.feed';
