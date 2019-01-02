@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var statustring = "No signal";
 var request = require('request');
-
+var servername = 'ForFriends | TTT';
 var url = 'http://query.fakaheda.eu/82.208.17.109:27107.feed';
 
 
@@ -13,10 +13,17 @@ function update() {
           //return message.reply('Error getting Minecraft server status...');
       }
 	  body = JSON.parse(body);
-	console.log(body);
-	console.log(body.status);
-      var status = 'Server offline';
-      if(body.status=="Online") {
+
+      var status = 'Žádná informace';
+	  client.user.setActivity(status)
+       .catch(console.error);
+	  client.user.setStatus('dnd')
+        .catch(console.error);
+	  client.user.setUsername(servername)
+       .catch(console.error);
+	   
+      if(body["status"]=="Online") {
+		status = ' ' + body["players"] + ' / ' + body["slots"];
         if(body["players"]>=body["stots"]){
             client.user.setStatus('idle')
             .catch(console.error);
@@ -24,17 +31,31 @@ function update() {
             client.user.setStatus('online')
             .catch(console.error);
         }
+	  client.user.setActivity(status, { type: 'PLAYING' })
+       .catch(console.error);
+	   
+	  } else if(body["status"]=="Offline") {
+		  status = 'Server Offline';
+		  client.user.setActivity(status)
+           .catch(console.error);
+	      client.user.setStatus('dnd')
+           .catch(console.error);
+		   
+	  } else {
+		  client.user.setActivity(status)
+           .catch(console.error);
+	      client.user.setStatus('dnd')
+           .catch(console.error);
+	  }
 		
-        status = ' ' + body["players"] + ' / ' + body["slots"];
+        
       } else {
         client.user.setStatus('dnd')
-        //.then(console.log)
         .catch(console.error);
-
+		client.user.setActivity('Žádná informace')
+         .catch(console.error);
       }
-      client.user.setActivity(status, { type: 'PLAYING' })
-      .then(presence => console.log(status))
-      .catch(console.error);
+
   });
 
 }
