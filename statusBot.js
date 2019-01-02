@@ -15,12 +15,6 @@ function update() {
 	  body = JSON.parse(body);
 
       var status = 'Žádné informace';
-	  client.user.setActivity(status)
-       .catch(console.error);
-	  client.user.setStatus('dnd')
-        .catch(console.error);
-	  client.user.setUsername(servername)
-       .catch(console.error);
 	   
       if(body["status"]=="Online") {
 		status = ' ' + body["players"] + ' / ' + body["slots"];
@@ -36,7 +30,7 @@ function update() {
 	   
 	  } else if((body["status"]=="Offline")||(body["status"]=="Pause")) {
 		  status = 'Server Offline';
-		  client.user.setActivity(status, { type: '' })
+		  client.user.setActivity(status, { type: null })
            .catch(console.error);
 	      client.user.setStatus('dnd')
            .catch(console.error);
@@ -54,7 +48,7 @@ function update() {
 }
 client.on("ready", () => {
   console.log("Server Status Bot - I am ready!");
-  client.setInterval(update,30000);
+  client.setInterval(update,3000);
 });
 
 /*client.on("message", (message) => {
