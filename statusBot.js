@@ -14,7 +14,7 @@ function update() {
       }
 	  body = JSON.parse(body);
 
-      var status = 'Žádná informace';
+      var status = 'Žádné informace';
 	  client.user.setActivity(status)
        .catch(console.error);
 	  client.user.setStatus('dnd')
@@ -34,9 +34,9 @@ function update() {
 	  client.user.setActivity(status, { type: 'PLAYING' })
        .catch(console.error);
 	   
-	  } else if(body["status"]=="Offline") {
+	  } else if((body["status"]=="Offline")||(body["status"]=="Pause")) {
 		  status = 'Server Offline';
-		  client.user.setActivity(status)
+		  client.user.setActivity(status, { type: '' })
            .catch(console.error);
 	      client.user.setStatus('dnd')
            .catch(console.error);
