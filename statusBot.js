@@ -14,6 +14,7 @@ function update() {
           //return message.reply('Error getting Minecraft server status...');
       }
     //  body = JSON.parse(body);
+	console.log(body);
       var status = 'Server offline';
       if(body["status"]=="Online") {
         if(body["players"]>=body["stots"]){
