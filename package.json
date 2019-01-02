@@ -1,13 +1,23 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
-  "main": "bot.js",
+  "name": "server-status-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for server status",
+  "main": "statusBot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node statusBot.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerokko/mcstatusbot.git"
+  },
+  "author": "lerokko adapted by Huskydog9988",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lerokko/mcstatusbot/issues"
+  },
+  "homepage": "https://github.com/lerokko/mcstatusbot#readme",
   "dependencies": {
-    "discord.js": "11.1.0",
-    "request": "2.81.0"
+    "discord.js": "^11.4.2",
+    "request": "^2.88.0"
   }
 }
