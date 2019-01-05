@@ -26,15 +26,15 @@ function update() {
             client.user.setStatus('online')
             .catch(console.error);
         }
-		if (stav) {
-			status = 'Playing ' + body["players"] + ' / ' + body["slots"];
+		if (stav=2) {
+			status = ' ' + body["players"] + ' / ' + body["slots"];
 			stav=0;
 		} else {
-			status = 'Map: ' + body["map"];
-			stav=1;
+			status = ' ' + body["map"];
+			stav=stav+1;
 		}
 
-		client.user.setActivity(status)
+		client.user.setActivity(status , { type: "PLAYING"})
          .catch(console.error);
 	   
 	  } else if((body["status"]=="Offline")||(body["status"]=="Pause")) {
