@@ -27,10 +27,10 @@ function update() {
             .catch(console.error);
         }
 		if (stav==2) {
-			status = ' ' + body["players"] + ' / ' + body["slots"];
+			status = ' ' + body["map"];	
 			stav=0;
 		} else {
-			status = ' ' + body["map"];
+			status = ' ' + body["players"] + ' / ' + body["slots"];
 			stav=stav+1;
 		}
 
