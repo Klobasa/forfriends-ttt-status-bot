@@ -4,6 +4,8 @@ var statustring = "No signal";
 var request = require('request');
 var servername = 'ForFriends | TTT';
 var url = 'http://query.fakaheda.eu/82.208.17.109:27107.feed';
+var stav = 0;
+var typ = null;
 
 
 function update() {
@@ -17,20 +19,27 @@ function update() {
       var status = 'Žádné informace';
 	   
       if(body["status"]=="Online") {
-		status = ' ' + body["players"] + ' / ' + body["slots"];
-        if(body["players"]>=body["stots"]){
+		if(body["players"]>=body["stots"]){
             client.user.setStatus('idle')
             .catch(console.error);
         }else{
             client.user.setStatus('online')
             .catch(console.error);
         }
-	  client.user.setActivity(status, { type: 'PLAYING' })
-       .catch(console.error);
+		if (stav) {
+			status = 'Playing ' + body["players"] + ' / ' + body["slots"];
+			stav=0;
+		} else {
+			status = 'Map: ' + body["map"];
+			stav=1;
+		}
+
+		client.user.setActivity(status)
+         .catch(console.error);
 	   
 	  } else if((body["status"]=="Offline")||(body["status"]=="Pause")) {
 		  status = 'Server Offline';
-		  client.user.setActivity(status, { type: null })
+		  client.user.setActivity(status)
            .catch(console.error);
 	      client.user.setStatus('dnd')
            .catch(console.error);
@@ -48,7 +57,7 @@ function update() {
 }
 client.on("ready", () => {
   console.log("Server Status Bot - I am ready!");
-  client.setInterval(update,3000);
+  client.setInterval(update,6000);
 });
 
 /*client.on("message", (message) => {
