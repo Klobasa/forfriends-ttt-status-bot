@@ -26,7 +26,7 @@ function update() {
             client.user.setStatus('online')
             .catch(console.error);
         }
-		if (stav=2) {
+		if (stav==2) {
 			status = ' ' + body["players"] + ' / ' + body["slots"];
 			stav=0;
 		} else {
