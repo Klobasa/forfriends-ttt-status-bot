@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var statustring = "No signal";
 var request = require('request');
-var servername = 'ForFriends | TTT';
+var servername = '[CS:GO]ForFriends|TTT';
 var url = 'http://query.fakaheda.eu/82.208.17.109:27107.feed';
 var stav = 0;
-var typ = null;
+
 
 
 function update() {
